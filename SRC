@@ -1,0 +1,49 @@
+CREATE DATABASE IF NOT EXISTS InventarioArmazem;
+
+USE InventarioArmazem;
+
+CREATE TABLE IF NOT EXISTS Produtos (
+ ProdutoID INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Descricao TEXT,
+    Preco DECIMAL(10,2),
+    QuantidadeEmEstoque INT,
+    CategoriaID INT
+    ); 
+    
+    CREATE TABLE IF NOT EXISTS Categorias (
+     CategoriaID INT PRIMARY KEY,
+    Nome VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS Fornecedores (
+       FornecedorID INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Contato VARCHAR(50),
+    Endereco TEXT
+);
+
+-- Inserindo dados (Exemplo)
+INSERT INTO Produtos (ProdutoID, Nome, Descricao, Preco, QuantidadeEmEstoque, CategoriaID)
+VALUES
+    (1, 'Smartphone', 'Último modelo', 2500.00, 50, 1),
+    (2, 'Tablet', 'Ideal para estudos', 1200.00, 20, 1);
+
+INSERT INTO Categorias (CategoriaID, Nome)
+VALUES
+    (1, 'Eletrônicos'),
+    (2, 'Vestimentas');
+    
+INSERT INTO Fornecedores (FornecedorID, Nome, Contato, Endereco)
+VALUES
+    (1, 'Mega Eletrônicos', 'contato@mega.com', 'Rua dos Eletrônicos, 123');
+
+SELECT * FROM Produtos; -- Lista todos os produtos
+SELECT * FROM Produtos WHERE CategoriaID = 1; -- Produtos da categoria 1
+SELECT * FROM Fornecedores WHERE Preco > 1000.00; -- Fornecedores com produtos acima de 1000
+
+UPDATE Produtos SET Preco = 2000.00 WHERE ProdutoID = 1; -- Atualiza o preço do produto 1
+UPDATE Categorias SET Descricao = 'Roupas de alta qualidade' WHERE CategoriaID = 2;
+
+DELETE FROM Produtos WHERE ProdutoID = 3; -- Deleta o produto 3
+DELETE FROM Categorias WHERE CategoriaID = 2; -- Deleta a categoria 2 (cuidado com referências em outras tabelas)
