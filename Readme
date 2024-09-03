@@ -1,0 +1,105 @@
+Enunciado
+Objetivo: Criar e gerenciar um banco de dados para o controle de inventário de um armazém, incluindo produtos, categorias e fornecedores.
+
+Passos:
+
+Criar o Banco de Dados:
+
+Crie um banco de dados chamado InventarioArmazem.
+Criar Tabelas:
+
+Produtos: Armazena informações sobre os produtos.
+ProdutoID (INT, PRIMARY KEY)
+Nome (VARCHAR(50))
+Descricao (TEXT)
+Preco (DECIMAL(10,2))
+QuantidadeEmEstoque (INT)
+CategoriaID (INT, chave estrangeira referenciando Categorias(CategoriaID))
+Categorias: Armazena categorias dos produtos.
+CategoriaID (INT, PRIMARY KEY)
+Nome (VARCHAR(50))
+Fornecedores: Armazena informações sobre os fornecedores.
+FornecedorID (INT, PRIMARY KEY)
+Nome (VARCHAR(50))
+Contato (VARCHAR(50))
+Endereco (TEXT)
+Inserir Dados:
+
+Adicione registros nas tabelas Produtos, Categorias e Fornecedores.
+Consultas e Relatórios:
+
+Liste todos os produtos.
+Liste produtos de uma categoria específica.
+Liste fornecedores com produtos acima de um determinado preço (correção: não é possível sem uma tabela de produtos associada aos fornecedores).
+Atualização de Dados:
+
+Atualize o preço de um produto.
+Atualize a descrição de uma categoria.
+Deletar Dados:
+
+Exclua um produto.
+Exclua uma categoria (cuidado com referências em outras tabelas).
+
+# Sistema de Inventário de Armazém
+
+Este projeto configura um banco de dados para gerenciar o inventário de um armazém, incluindo produtos, categorias e fornecedores.
+
+## Estrutura do Banco de Dados
+
+### Tabelas
+
+1. **Produtos**
+   - `ProdutoID` (INT, PRIMARY KEY)
+   - `Nome` (VARCHAR(50))
+   - `Descricao` (TEXT)
+   - `Preco` (DECIMAL(10,2))
+   - `QuantidadeEmEstoque` (INT)
+   - `CategoriaID` (INT, FOREIGN KEY referenciando `Categorias(CategoriaID)`)
+
+2. **Categorias**
+   - `CategoriaID` (INT, PRIMARY KEY)
+   - `Nome` (VARCHAR(50))
+
+3. **Fornecedores**
+   - `FornecedorID` (INT, PRIMARY KEY)
+   - `Nome` (VARCHAR(50))
+   - `Contato` (VARCHAR(50))
+   - `Endereco` (TEXT)
+
+## Operações
+
+1. **Criação do Banco de Dados e Tabelas**
+
+   Execute o script SQL fornecido para criar o banco de dados `InventarioArmazem` e as tabelas `Produtos`, `Categorias`, e `Fornecedores`.
+
+2. **Inserção de Dados**
+
+   Adicione registros nas tabelas para preencher informações sobre produtos, categorias e fornecedores.
+
+3. **Consultas e Relatórios**
+
+   - Liste todos os produtos.
+   - Liste produtos de uma categoria específica.
+   - (Nota: A consulta que tenta listar fornecedores com produtos acima de um determinado preço não funcionará corretamente porque não há uma relação direta entre fornecedores e produtos na tabela fornecida.)
+
+4. **Atualização de Dados**
+
+   - Atualize o preço de um produto específico.
+   - Atualize a descrição de uma categoria.
+
+5. **Exclusão de Dados**
+
+   - Exclua um produto específico.
+   - Exclua uma categoria, mas tenha cuidado para verificar referências em outras tabelas antes de realizar a exclusão.
+
+## Executando o Script SQL
+
+1. Conecte-se ao servidor MySQL.
+2. Copie e cole o código SQL fornecido em um cliente MySQL.
+3. Execute o script para criar e gerenciar o banco de dados `InventarioArmazem`.
+
+## Notas
+
+- A tabela `Produtos` deveria ter uma relação com fornecedores, que pode ser incluída na estrutura futura.
+- Certifique-se de verificar dependências e integridade referencial ao excluir categorias ou produtos.
+
